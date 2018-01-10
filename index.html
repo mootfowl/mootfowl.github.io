@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DJA-BINGO</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body {
+            font-family: Helvetica;
+        }
+
+        #board {
+            width: 660px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #board div {
+            height: 100px;
+            width: 100px;
+            border: 1px solid grey;
+            background-color: whitesmoke;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        #board div:hover {
+            background-color: gold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="title" style="font-size: 7em"> D  J  A  N  G  O</div>
+    <div id="board">
+
+    </div>
+
+
+    <script>
+
+    function random_number(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    let height = 6;
+    let width = 6;
+    let words = ['dongle', 'backend', 'frontend', 'AJAX', 'script', 'bootstrap', 'framework', 'mouse', 'Matthew', 'event listener', 'codepen', 'onclick', 'gif', 'coffee', 'csrf token', 'API', 'fuck', 'Slack', 'not working', 'homer', 'python', 'syntax', 'JSON', 'dictionary', 'div', 'form', 'css', 'views.py', 'superuser', "didn\'t work", 'Nick', 'module', 'object', 'tags', 'just code it', 'function', 'method', 'crashed', 'bitcoin', 'models'];
+    let board = document.getElementById("board");
+    for (let i = 0; i < height; ++i) {
+        for (let j = 0; j < width; ++j) {
+            let tile = document.createElement("div");
+            tile.innerText = words[random_number(0, words.length-1)];
+            tile.onclick = function() {
+                if (tile.style.backgroundColor === 'whitesmoke') {
+                    tile.style.backgroundColor = 'cornflowerblue';
+                    tile.style.fontWeight = 'bold';
+                    tile.style.color = 'white';
+                } else {
+                    tile.style.backgroundColor = 'whitesmoke';
+                    tile.style.fontWeight = 'normal';
+                    tile.style.color = 'black';
+                }
+            };
+            board.appendChild(tile);
+        }
+    }
+
+    </script>
+
+</body>
+</html>
